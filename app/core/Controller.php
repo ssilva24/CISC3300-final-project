@@ -10,8 +10,11 @@ class Controller
         if($includeBundle) {
             echo vite('main.js');
         }
-        include $path;
 
+        $fullpath = __DIR__ . '../public/views/main/homepage.php' .$path;
+        if(file_exists($fullpath)) {
+            include $fullpath;
+        }
     }
 
 
