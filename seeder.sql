@@ -13,7 +13,6 @@ CREATE TABLE 'contacts'
     `name`       varchar(80) NOT NULL,
     `email`      varchar(256) NOT NULL,
     `message`    varchar(256) NOT NULL,
-    `created_at` datetime NOT NULL,
     primary key (`id`)
 );
 
