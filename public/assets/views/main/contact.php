@@ -9,7 +9,7 @@
     <div class="container">
         <h1> Stephanie Silva</h1>
         <h2>Contact Me! I will get back to you soon,</h2>
-        <form id="contactForm">
+        <form id="contactForm" action="/contact" method= "POST">
 
 
     <div class="form-group">
