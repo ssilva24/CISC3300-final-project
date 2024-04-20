@@ -3,10 +3,10 @@
 if($_SERVER['SERVER_NAME'] == 'localhost')
 {
 	/** database config **/
-	define('DBNAME', 'Final-Project');
-	define('DBHOST', 'localhost');
-	define('DBUSER', 'root');
-	define('DBPASS', 'root');
+	define('DBNAME', $env['DBNAME']);
+	define('DBHOST', $env['DBHOST']);
+	define('DBUSER', $env['DBUSER']);
+	define('DBPASS', $env['DBPASS']);
 	define('DBDRIVER', '');
 	
 	define('ROOT', 'http://localhost:8888/');
@@ -14,10 +14,10 @@ if($_SERVER['SERVER_NAME'] == 'localhost')
 }else
 {
 	/** database config **/
-	define('DBNAME', $env['Final-Project']);
-	define('DBHOST', $env['localhost']);
-	define('DBUSER', $env['root']);
-	define('DBPASS', $env['root']);
+	define('DBNAME', 'my_db');
+	define('DBHOST', 'localhost');
+	define('DBUSER', 'root');
+	define('DBPASS', '');
 	define('DBDRIVER', '');
 
 	define('ROOT', 'https://www.yourwebsite.com');
