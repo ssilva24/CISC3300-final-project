@@ -7,6 +7,7 @@ use app\controllers\MainController;
 class Router
 {
     public $routeList;
+    
     function __construct($routes)
     {
         $this->routeList = $routes;
@@ -14,22 +15,33 @@ class Router
 
     public function serveRoute() {
         $uriParse = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
-        $method =  $_SERVER['REQUEST_METHOD'];
+        $method = $_SERVER['REQUEST_METHOD'];
 
         if ($uriParse[0]) {
             $route = $this->routeList[$uriParse[0]];
             if ($route) {
-                $controller = $route['controller'];
+                $controllerName = $route['controller'];
                 $action = $route[$method];
-                $controller = new $controller();
-                $controller->$action();
+                $controller = new $controllerName();
+                
+                if (method_exists($controller, $action)) {
+                    $controller->$action();
+                } else {
+                    $homepageController = new MainController();
+                    $homepageController->notFound();
+                }
             } else {
                 $homepageController = new MainController();
                 $homepageController->notFound();
             }
         } else {
-            $homepageController = new MainController();
-            $homepageController->homepage();
+            if ($method === 'POST') {
+                $contactController = new \app\controllers\ContactController();
+                $contactController->processContactForm();
+            } else {
+                $homepageController = new MainController();
+                $homepageController->homepage();
+            }
         }
     }
 }
